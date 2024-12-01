@@ -5,5 +5,6 @@ export function read_lines(day:number):string[] {
 }
 
 export function read_lines_as_num(day:number):number[] {
-    return read_lines(1).map(e => +e);
+    let lines = read_lines(day).map(e => e.split('').filter(e2 => e2.replace(/(\D)*/gm,"")).join(''));
+    return lines.map(e => +e);
 }
