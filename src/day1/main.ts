@@ -1,8 +1,9 @@
 import { Console } from 'console';
 import { readFileSync } from 'fs';
+import { read_lines } from '../lib.mjs';
 
 function main() {
-    const input: string[] = readFileSync('src/day1/input.txt', 'utf-8').split('\n');
+    const input: string[] = read_lines(1);
     console.log(`part 1: ${part1(input)}\npart 2: ${part2(input)}`);
 }
 
