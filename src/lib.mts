@@ -8,3 +8,8 @@ export function read_lines_as_num(day:number):number[] {
     let lines = read_lines(day).map(e => e.split('').filter(e2 => e2.replace(/(\D)*/gm,"")).join(''));
     return lines.map(e => +e);
 }
+
+export function read_lines_as_num_arrays(day: number):number[][] {
+    let lines = read_lines(day).map(e => e.split('').filter(e2 => e2.replace(/(\D)*/gm,"")));
+    return lines.map(e => e.map(e2 => +e2));
+}
