@@ -17,7 +17,7 @@ function main() {
   console.log(`part 1: ${part1(input)}\npart 2: ${part2(input)}`);
 }
 
-function part1(lines: string[]) {
+function part1(lines: string[]):number {
   let result = 0;
   for (let i = 0; i < lines.length; i++) {
     for (let j = 0; j < lines[i].length; j++) {
@@ -117,16 +117,28 @@ function part1(lines: string[]) {
   return result;
 }
 
-function part2(lines: string[]) {
-  return 0;
+function part2(lines: string[]):number {
+  let result = 0;
+  for (let i = 0; i < lines.length; i++) {
+    for (let j = 0; j < lines[i].length; j++) {
+      if (lines[i][j] === "A") {
+        if (i>0 && i+1<lines.length && j+1<lines[i].length && j>0)
+          if (mas_check((lines.slice(i-1,i+2).map(s => s.slice(j-1,j+2))))) result += 1;
+      }
+    }
+  }
+  return result;
 }
 
-function xmas_check(xmas: string[]) {
-  console.log(xmas.join(""));
+function xmas_check(xmas: string[]):boolean {
   if (xmas.join("") === "XMAS") {
     return true;
   }
   return false;
 }
 
+function mas_check(matrix: string[]):boolean{
+  const diagonals:string[] = [((matrix[0][0]).concat(matrix[1][1],matrix[2][2])),((matrix[0][2]).concat(matrix[1][1],matrix[2][0]))]
+  return diagonals.every(d => d === "SAM"|| d === "MAS");
+}
 main();
